@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>rechercher experience</title>
+
+
+
+</head>
+
+<body>
+<h1><center>Rechercher une Experience</center></h1>
+
+   <form action="/rechercher" method="post">
+   <CENTER>
+<table>
+
+<tr>
+<td>Nombre de places Dispo</td> 
+<td>
+<input type="number" id="nbReplacesDispo" name="nbReplacesDispo"  min="1" max="30"><br></td>
+</tr>
+<!--  
+<tr>
+<td>
+Date Experience</td>
+<td> <input name="dateExperience" id="dateExperience" type="datetime-local"/></td><br>
+</tr>
+-->
+
+
+<tr>
+<td>
+
+<input type="submit" value="Rechercher" />
+</td>
+
+</tr>
+
+</table></CENTER>
+
+
+</form>
+
+
+<table border="1">
+<tr>
+<th>ID</th>
+<th>Description</th>
+<th>Date creation</th>
+
+
+<th>Rating Parking</th>
+<th>Nombre de places Dispo</th>
+</tr>
+<tr th:each="experience : ${experiences}">
+
+
+<td th:text="${experience.getIdExperience()}"></td>
+<td th:text="${experience.getDescriptionExprerience()}"></td>
+
+ 
+  <td th:text="${#dates.format(experience.getDateExperience(),'dd-MM-yyyy HH:mm:ss')}"></td>
+
+
+  <td th:text="${experience.getStars()}"></td>
+  
+  <td th:text="${experience.getNbReplacesDispo()}"></td>
+
+  </tr>
+  
+</table>
+
+
+</body>
+</html>

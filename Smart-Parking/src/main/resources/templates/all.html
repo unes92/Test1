@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>all</title>
+  
+
+<script>
+
+//let d = new Date();
+function changer()
+{
+alert("Today's date is " + document.getElementById('dateexp2').value);
+}
+
+
+function select()
+{
+alert("la valeur choisi est " + document.getElementById('pets').value);
+}
+
+document.getElementById('dateexp').value =new Date().toISOString().substring(0, 10);
+document.write("dateexp value "+d);
+
+</script>
+    
+ <style type="text/css">
+ 
+ 
+table td
+{
+text-align:center;
+}
+.rating {
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  font-size: 50px;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label .icon {
+  float: left;
+  color: transparent;
+}
+
+.rating label:last-child .icon {
+  color: #000;
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+  color: #09f;
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+  color: #000;
+  text-shadow: 0 0 5px #09f;
+}
+</style>
+</head>
+<body>
+
+<center>
+<table border="1" >
+<tr>
+<th>id PARKING</th>
+<th>PARKING</th>
+<th>ID</th>
+<th>Description</th>
+<th>Date creation</th>
+<th>Nombre de places disponibles</th>
+<th>Rating </th>
+<th>Rating Parking</th>
+</tr>
+<tr th:each="experience : ${Experiences}">
+
+<td th:text="${experience.getParking().getIdParking()}"></td>
+<td th:text="${experience.getParking().getLibParking()}"></td>
+<td th:text="${experience.getIdExperience()}"></td>
+<td th:text="${experience.getDescriptionExprerience()}"></td>
+
+  <td th:text="${#dates.format(experience.getDateExperience(),'dd-MM-yyyy HH:mm:ss')}"></td>
+  
+ 
+
+<td th:text="${experience.getNbReplacesDispo()}"></td>
+ 
+  
+  <td th:text="${experience.getStars()}"></td>
+  
+  
+  
+  
+  
+  <td>
+  <div class="rating">
+  <label>
+    <input type="radio" name="stars" id="stars" value="1" />
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" id="stars" value="2" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" id="stars" value="3" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>   
+  </label>
+  <label>
+    <input type="radio" name="stars" id="stars" value="4" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" id="stars" value="5" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  </div>
+</td>
+  
+  
+  
+  
+  
+</tr>
+</table>
+</center>
+
+
+
+
+
+</body>
+</html>
